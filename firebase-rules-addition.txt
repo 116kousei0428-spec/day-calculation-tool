@@ -1,0 +1,11 @@
+// Firebase Realtime Database > ルール の既存の "rules" 内に、同階層のキーとして追記する断片です。
+// 既存ルールを削除・置換しないでください。
+"toichi_shared_v1": {
+  ".read": true,
+  "records": {
+    ".write": true,
+    "$recordId": {
+      ".validate": "newData.hasChildren(['name', 'principal', 'startAt', 'status']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 100 && newData.child('principal').isNumber() && newData.child('principal').val() >= 0 && newData.child('principal').val() <= 999999999999 && newData.child('startAt').isNumber() && (newData.child('status').val() === 'active' || newData.child('status').val() === 'completed')"
+    }
+  }
+}
